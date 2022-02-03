@@ -14,7 +14,7 @@ const TableUsers = () => {
   useEffect(() => {
     fetch('user/all')
       .then((data) => data.json())
-      .then((data) => setUsers(data.users));
+      .then((data) => setUsers(data.results));
 
   }, []);
 

@@ -9,7 +9,7 @@ const get_all_users = (req, res) => {
             res
             .status(200)
             .json({
-                users: results
+                results
             })
         })
     } catch (err) {
