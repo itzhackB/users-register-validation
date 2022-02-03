@@ -12,7 +12,7 @@ const TableUsers = () => {
   const [users, setUsers] = useState();
 
   useEffect(() => {
-    fetch('/user/all')
+    fetch('user/all')
       .then((data) => data.json())
       .then((data) => setUsers(data.users));
 

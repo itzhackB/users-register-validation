@@ -1,20 +1,28 @@
 const User = require('../model/user');
 const validator = require('../assist/validator');
 
-const get_all_users = async (req, res) => {
+const get_all_users = (req, res) => {
 
-    await User.find()
-        .then((result) => {
+    try {
+        User.find({}, (err, results) => {
+            if (err) throw err;
             res
             .status(200)
             .json({
-                users:result
+                users: results
             })
-            
         })
-        .catch((err) => {
-            console.log(err);
-        })
+    } catch (err) {
+        res
+        .status(500)
+        .json({
+            success: false,
+            message: "get users failed",
+            error: err.message
+        });
+    }
+
+
 }
 
 const create_user = async (req, res) => {
@@ -39,7 +47,7 @@ const create_user = async (req, res) => {
                 .json({
                     success: false,
                     errors:
-                    {email: "email already exists"}
+                        { email: "email already exists" }
                 });
         }
 

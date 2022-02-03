@@ -19,7 +19,7 @@ const CreateUser = () => {
 
     const addUser = () => {
 
-        fetch('/user/create', {
+        fetch('user/create', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
