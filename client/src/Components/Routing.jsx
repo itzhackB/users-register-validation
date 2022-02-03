@@ -7,7 +7,6 @@ const Routing = () => {
     return (
         <Switch>
             <Route exact path="/" component={CreateUser} />
-            <Route path={'/all-users'} component={Table} />
         </Switch>
     );
 };
