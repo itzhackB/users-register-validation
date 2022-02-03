@@ -12,7 +12,13 @@ const TableUsers = () => {
   const [users, setUsers] = useState();
 
   useEffect(() => {
-    fetch('user/all')
+    fetch('user/all', {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
       .then((data) => data.json())
       .then((data) => setUsers(data.results));
 
