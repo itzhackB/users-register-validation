@@ -1,11 +1,16 @@
 const User = require('../model/user');
 const validator = require('../assist/validator');
 
-const get_all_users = (req, res) => {
+const get_all_users = async (req, res) => {
 
-    User.find()
+    await User.find()
         .then((result) => {
-            res.send(result)
+            res
+            .status(200)
+            .json({
+                users:result
+            })
+            
         })
         .catch((err) => {
             console.log(err);

@@ -14,7 +14,7 @@ const TableUsers = () => {
   useEffect(() => {
     fetch('/user/all')
       .then((data) => data.json())
-      .then((data) => setUsers(data));
+      .then((data) => setUsers(data.users));
 
   }, []);
 
@@ -31,20 +31,27 @@ const TableUsers = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {users?.map((user) => (
-            <TableRow
-              key={user._id}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
-                {user.id}
-              </TableCell>
-              <TableCell align="right">{user.firstName}</TableCell>
-              <TableCell align="right">{user.lastName}</TableCell>
-              <TableCell align="right">{user.birthDay}</TableCell>
-              <TableCell align="right">{user.email}</TableCell>
-            </TableRow>
-          ))}
+          {
+            users?.length > 0 ?
+              users?.map((user) => (
+                <TableRow
+                  key={user._id}
+                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                >
+                  <TableCell component="th" scope="row">
+                    {user.id}
+                  </TableCell>
+                  <TableCell align="right">{user.firstName}</TableCell>
+                  <TableCell align="right">{user.lastName}</TableCell>
+                  <TableCell align="right">{user.birthDay}</TableCell>
+                  <TableCell align="right">{user.email}</TableCell>
+                </TableRow>
+
+              ))
+              :
+              ""
+          }
+
         </TableBody>
       </Table>
     </TableContainer>
