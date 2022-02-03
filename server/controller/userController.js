@@ -3,15 +3,8 @@ const validator = require('../assist/validator');
 
 const get_all_users = (req, res) => {
 
-
-    User.find({}, (err, results) => {
-        if (err) throw err;
-        res
-            .status(200)
-            .json({
-                results
-            })
-    })
+    User.find()
+        .then((users) => res.json(users))
 }
 
 const create_user = async (req, res) => {
